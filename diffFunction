@@ -1,0 +1,3 @@
+const name='Aakash';
+console.log(name);
+
