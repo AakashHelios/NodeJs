@@ -1,4 +1,4 @@
 const fs= require("fs");
 
-//fs.mkdirSync('NpmModule');
- fs.writeFileSync('./NpmModule/index.js','hello');
+fs.mkdirSync('UserApi');
+ fs.writeFileSync('./UserApi/index.json','hi');
