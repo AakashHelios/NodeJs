@@ -1,4 +1,4 @@
 const fs= require("fs");
 
-fs.mkdirSync('UserApi');
- fs.writeFileSync('./UserApi/index.json','hi');
+fs.mkdirSync('WeatherApp');
+ fs.writeFileSync('./WeatherApp/index.js','hi');
