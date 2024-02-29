@@ -1,0 +1,17 @@
+.box{
+    border-style: groove;
+    box-shadow: 0 0.2rem 3rem rgba( 0,0,0.2);
+    border-radius: 0.5rem;
+    width: 20vw;
+    height: 60vh;
+    padding: 31px;
+    margin: 0 auto;
+    
+}
+body{
+    width: 100vw;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

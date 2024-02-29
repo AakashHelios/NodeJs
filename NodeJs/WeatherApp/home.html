@@ -1,23 +1,113 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@4.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="home.css" />
+    <title>Weather App</title>
+    <style>.box{
+      border-style: groove;
+      box-shadow: 0 0.2rem 3rem rgba( 0,0,0.2);
+      border-radius: 0.5rem;
+      width: 20vw;
+      height: 60vh;
+      padding: 31px;
+      margin: 0 auto;
+      
+  }
+  body{
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+  }</style>
+  </head>
+  <body>
     <div class="box">
-        <div class="wave-one"></div>
-        <div class="wave-two"></div>
-        <div class="wave-three"></div>
-        <div id="weather">
-            <i class="fa-solid fa-sun" style="color: yellow;"></i> 
-        </div>
-        <div class="info">
-            <h2 class="location"><i class="fa-solid fa-street-view"></i>Pune, In</h2>
-            <p id="date">WED |OCT 23| 10:43 PM</p>
-            <h1 class="temp">26.59</h1>
-        </div>
+      <div class="wave-one"></div>
+      <div class="wave-two"></div>
+      <div class="wave-three"></div>
+      <div id="weathercon">
+        <i class="ri-sun-fill" style="color: rgb(255, 230, 0)"></i>
+      </div>
+      <div class="info">
+        <h2 class="location">
+          <i
+            class="fa-solid fa-street-view"
+            style="color: rgb(255, 255, 255)"
+          ></i
+          >{%location%}, {%Country%}
+        </h2>
+        <p id="date">WED |OCT 23| 10:43 PM</p>
+        <h1 class="temp">{%tempval%} &deg;C</h1>
+        <h3 class="tempmin_max">Min {%tempmin%}&deg;C| Max {%tempmax%}&deg;C</h3>
+      </div>
     </div>
-</body>
+
+    <script>
+      const curDate = document.getElementById("date");
+      let weather = document.getElementById("weathercon");
+      const tempStatus = "Clouds";
+      const getCurrentDay = () => {
+        var weekday = new Array(7);
+        weekday[0] = "Sun";
+        weekday[1] = "Mon";
+        weekday[2] = "Tue";
+        weekday[3] = "Wed";
+        weekday[4] = "Thu";
+        weekday[5] = "Fri";
+        weekday[6] = "Sat";
+
+        let currentTime = new Date();
+        let day = weekday[currentTime.getDay()];
+        return day;
+        console.log(weekday[currentTime.getDay()]);
+      };
+
+      const getCurrentTime = () => {
+        var months = [
+          "Jan",
+          "Feb",
+          "Mar",
+          "Apr",
+          "May",
+          "Jun",
+          "Jul",
+          "Aug",
+          "Sep",
+          "Oct",
+          "Nov",
+          "Dec",
+        ];
+
+        var now = new Date();
+        var month = months[now.getMonth()];
+        var date = now.getDate();
+        console.log(month, "/", date);
+
+        var hours = now.getHours();
+        var mins = now.getMinutes();
+
+        var periods = "AM";
+        if (hours > 11) {
+          periods = "PM";
+          if (hours > 12) hours -= 12;
+        }
+        if (mins < 10) {
+          mins = "0" + mins;
+        }
+        console.log("month", month, "date", date, " ", hours, "h", mins, "min");
+        return `${month} ${date}| ${hours}:${mins} ${periods}`;
+      };
+
+      curDate.innerHTML = `${getCurrentDay()} | ${getCurrentTime()}`;
+
+      //getCurrentDay();
+    </script>
+  </body>
 </html>
